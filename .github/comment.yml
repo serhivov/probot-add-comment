@@ -1,0 +1,5 @@
+comments:
+  - comment: |
+      Please add a `type:<issue type>` label to this 
+      issue.
+    label: needs-type
