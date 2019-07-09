@@ -1,0 +1,22 @@
+language: node_js
+cache: npm
+node_js:
+  - 8
+  - 10
+  - 12
+
+stages:
+  - test
+  - name: release
+    if: branch =~ /^(\d+\.x|master)$/ AND type IN (push)
+
+jobs:
+  include:
+    - stage: test
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
