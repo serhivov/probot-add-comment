@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/lswith/probot-add-comment.git"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "probot"
   ],
