@@ -12,9 +12,10 @@ Add a `.github/comment.yml` file to your repository and then run the bot against
 If the config is empty or doesn't exist, the bot will not run.
 
 ```yml
+# Example Config
 
-# Config
-
+# This config will look for any issues that have been labeled with `needs-area`. A comment
+# will be added to the issue and will be removed once the `needs-area` label is removed.
 comments:
   - label: needs-area
     comment: |
