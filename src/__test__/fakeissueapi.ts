@@ -1,7 +1,7 @@
 import { FakeGithub } from "./fakegithub";
 
 export class FakeIssueApi {
-      private top: FakeGithub;
+      public top: FakeGithub;
 
       constructor(top: FakeGithub) {
         this.top = top;
