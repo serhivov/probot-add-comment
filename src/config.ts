@@ -13,7 +13,7 @@ export class ConfigManager<T> {
   }
 
   public async getConfig(context: Context): Promise<T> {
-    return context.config(this.filename, this.config).then((newConfig) => {
+    return context.config(this.filename, this.config).then(newConfig => {
       const result = this.validateConfig(newConfig);
       if (result.error) {
         const annotation = result.error.annotate();
@@ -25,7 +25,9 @@ export class ConfigManager<T> {
     });
   }
 
-  private validateConfig(config: any): ({ value: T, error?: Joi.ValidationError }) {
+  private validateConfig(
+    config: any
+  ): { value: T; error?: Joi.ValidationError } {
     return Joi.validate(config, this.schema);
   }
 }
