@@ -13,6 +13,7 @@ export async function handle(
   const logger = context.log.child({
     owner: owner,
     repo: repo,
+    issue: issueNumber,
     app: "probot-add-comment"
   });
 
