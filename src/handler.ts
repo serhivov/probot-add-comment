@@ -25,7 +25,12 @@ export async function handle(
         const commentId = await getCommentId(context, c.comment);
         if (commentId === null) {
           await context.github.issues
-            .createComment(context.issue({ body: c.comment }))
+            .createComment({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              body: c.comment
+            })
             .catch((err: any) => {
               throw new Error(
                 `Couldn't add comment for issue: ${issueNumber}, error: ${err}`
@@ -47,8 +52,13 @@ async function getCommentId(
   context: Context,
   comment: string
 ): Promise<number | null> {
+  const issue = context.issue();
   return await context.github.issues
-    .listComments(context.issue())
+    .listComments({
+      repo: issue.repo,
+      owner: issue.owner,
+      issue_number: issue.number
+    })
     .then(resp => {
       const allComments: Array<{ id: number; body: string }> = resp.data;
       for (const c of allComments) {
@@ -69,9 +79,10 @@ async function getCommentId(
 
 async function pruneComments(context: Context, comment: string): Promise<void> {
   let id = await getCommentId(context, comment);
+  const issue = context.issue();
   if (id !== null) {
     await context.github.issues
-      .deleteComment(context.issue({ comment_id: id! }))
+      .deleteComment({ repo: issue.repo, owner: issue.owner, comment_id: id! })
       .catch(err => {
         throw new Error(
           `Couldn't delete comment: ${id} for issue: ${
