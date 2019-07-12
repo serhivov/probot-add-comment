@@ -9,7 +9,7 @@
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "start": "probot run ./lib/index.js",
-    "dev": "nodemon --exec \"npm start\""
+    "dev": "LOG_LEVEL=debug nodemon --exec \"npm start\""
   },
   "repository": {
     "type": "git",

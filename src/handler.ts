@@ -8,10 +8,19 @@ export async function handle(
   const label = context.payload.label;
   const labeled = context.payload.action === "labeled";
   const issueNumber = context.issue().number;
+  const owner = context.issue().owner;
+  const repo = context.issue().repo;
+  const logger = context.log.child({
+    owner: owner,
+    repo: repo,
+    app: "probot-add-comment"
+  });
 
   for (const c of comments) {
     if (label.name === c.label) {
+      logger.debug(`label matches config: ${label.name}`);
       if (labeled) {
+        logger.debug(`looking for comment: ${c.comment}`);
         const commentId = await getCommentId(context, c.comment);
         if (commentId === null) {
           await context.github.issues
@@ -21,9 +30,11 @@ export async function handle(
                 `Couldn't add comment for issue: ${issueNumber}, error: ${err}`
               );
             });
+          logger.debug(`created comment: ${c.comment}`);
         }
         continue;
       } else {
+        logger.debug("pruning comments");
         await pruneComments(context, c.comment);
         continue;
       }
