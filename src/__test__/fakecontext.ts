@@ -15,6 +15,15 @@ export class FakeContext {
     this.config = configMethod;
     this.name = "test";
     this.id = "test";
+    this.log = {
+      child: (x: any) => {
+        return {
+          debug: (y: any) => {
+            return;
+          }
+        };
+      }
+    };
   }
 
   public issue<T>(
