@@ -18,10 +18,8 @@ export class ConfigManager<T> {
       if (result.error) {
         const annotation = result.error.annotate();
         throw new Error(`Invalid Config: ${annotation}`);
-      } else {
-        this.defaultConfig = newConfig;
       }
-      return this.defaultConfig;
+      return newConfig;
     });
   }
 
