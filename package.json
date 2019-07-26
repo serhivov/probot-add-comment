@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "@types/joi": "^14.3.3",
-    "@types/node": "^12.6.1",
+    "@types/node": "^12.6.8",
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "joi": "^14.3.1",
-    "probot": "^9.2.15"
+    "probot": "^9.2.20",
+    "probot-config-manager": "^1.0.1"
   }
 }

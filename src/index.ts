@@ -1,5 +1,5 @@
 import { Application, Context } from "probot";
-import { ConfigManager } from "./config";
+import { ConfigManager } from "probot-config-manager";
 import { handle } from "./handler";
 import { IConfig, schema } from "./models";
 
