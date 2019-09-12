@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "joi": "^14.3.1",
-    "probot": "^9.2.20",
+    "probot": "^9.4.0",
     "probot-config-manager": "^1.0.1"
   }
 }
