@@ -34,6 +34,9 @@ module.exports = async (app: Application) => {
     if ("pull_request" === context.event) {
       eventType = config.pulls;
     }
+    if (!eventType) {
+      eventType = config.comments;
+    }
 
     if (eventType) {
       logger.debug("Config exists");
