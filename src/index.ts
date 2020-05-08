@@ -4,7 +4,12 @@ import { handle } from "./handler";
 import { IConfig, schema } from "./models";
 
 module.exports = async (app: Application) => {
-  const events = ["issues.labeled", "issues.unlabeled"];
+  const events = [
+    "issues.labeled",
+    "issues.unlabeled",
+    "pull_request.labeled",
+    "pull_request.unlabeled"
+  ];
   const configManager = new ConfigManager<IConfig>("comment.yml", {}, schema);
 
   app.log.info("probot-add-comment loaded");
@@ -24,10 +29,16 @@ module.exports = async (app: Application) => {
       context.log.error(err);
       return {} as IConfig;
     });
-    if (config.comments) {
+
+    let eventType = config.issues;
+    if ("pull_request" === context.event) {
+      eventType = config.pulls;
+    }
+
+    if (eventType) {
       logger.debug("Config exists");
       logger.debug(config);
-      await handle(context, config.comments!).catch(err => {
+      await handle(context, eventType!).catch(err => {
         context.log.error(err);
       });
       logger.debug("Handled");

@@ -16,7 +16,7 @@ export class FakeContext extends Context<any> {
     this.payload = payload;
     this.github = github;
     this.config = configMethod;
-    this.name = "test";
+    this.name = github.event;
     this.id = "test";
     this.log = {
       child: (x: any) => {
