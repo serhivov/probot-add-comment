@@ -3,7 +3,7 @@
 [![Downloads][npm-downloads]][npm-url] [![version][npm-version]][npm-url]
 [![Build Status][travis-status]][travis-url]
 
-A [Probot](https://probot.github.io) bot to add/remove a comment to issues when a label is present/removed.
+A [Probot](https://probot.github.io) bot to add/remove a comment to issues and pull requests when a label is present/removed.
 
 ## Setup
 
@@ -14,8 +14,23 @@ If the config is empty or doesn't exist, the bot will not run.
 ```yml
 # Example Config
 
-# This config will look for any issues that have been labeled with `needs-area`. A comment
-# will be added to the issue and will be removed once the `needs-area` label is removed.
+# This config will look for any issues and pull requests that have been labeled with `needs-area`. A comment
+# will be added to the issue or pull request and will be removed once the `needs-area` label is removed.
+issues:
+  - label: needs-area
+    comment: |
+      Please add an `area:<team>` label to this issue.
+pulls:
+  - label: needs-area
+    comment: |
+      Please add an `area:<team>` label to this pull request.
+```
+
+### Backwards compatibility
+Previous version of the bot will still work with current version, as the schema for the configuration file does not change the structure. So it's possible to upgrade and keep old configuration:
+
+```yaml
+# The old format matches the new one, using a different name
 comments:
   - label: needs-area
     comment: |
