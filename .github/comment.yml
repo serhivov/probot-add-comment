@@ -1,6 +1,13 @@
-comments:
+issues:
   - comment: |
-      Please add a `type:<issue type>` label to this 
+      Please add a `type:<issue type>` label to this
+      issue.
+    label: needs-type
+  - comment: "@lswith"
+    label: type:test
+pulls:
+  - comment: |
+      Please add a `type:<issue type>` label to this
       issue.
     label: needs-type
   - comment: "@lswith"
