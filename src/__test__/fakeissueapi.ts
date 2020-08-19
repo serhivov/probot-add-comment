@@ -15,9 +15,9 @@ export class FakeIssueApi {
   }) {
     this.top.commentsAdded.push(params.body);
     this.top.comments.push(params.body);
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve({
-        data: []
+        data: [],
       });
     });
   }
@@ -31,9 +31,9 @@ export class FakeIssueApi {
     const comment = this.top.comments[params.comment_id];
     this.top.commentsRemoved.push(comment);
     delete this.top.comments[params.comment_id];
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve({
-        data: []
+        data: [],
       });
     });
   }
@@ -43,7 +43,7 @@ export class FakeIssueApi {
     repo: string;
     issue_number: number;
   }) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const comments: Array<{ id: number; body: string }> = [];
       for (let i = 0; i < this.top.comments.length; i++) {
         if (this.top.comments[i]) {
@@ -51,7 +51,7 @@ export class FakeIssueApi {
         }
       }
       resolve({
-        data: comments
+        data: comments,
       });
     });
   }

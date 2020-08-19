@@ -23,9 +23,9 @@ export class FakeContext extends Context<any> {
         return {
           debug: (y: any) => {
             return;
-          }
+          },
         };
-      }
+      },
     };
   }
 
