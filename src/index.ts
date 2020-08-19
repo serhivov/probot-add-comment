@@ -25,10 +25,13 @@ module.exports = async (app: Application) => {
       app: "probot-add-comment"
     });
     logger.debug("Getting Config");
-    const config = await configManager.getConfig(context).catch(err => {
+    let config: IConfig;
+    try {
+      config = (await configManager.getConfig(context)) ?? ({} as IConfig);
+    } catch (err) {
       context.log.error(err);
-      return {} as IConfig;
-    });
+      config = {};
+    }
 
     let eventType = config.issues;
     if ("pull_request" === context.event) {
