@@ -28,9 +28,13 @@
   },
   "homepage": "https://github.com/lswith/probot-add-comment#readme",
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/travis-cli": "^9.1.2",
     "@types/jest": "^24.9.1",
     "@types/joi": "^14.3.4",
     "@types/node": "^12.12.54",
+    "husky": "^4.2.5",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
@@ -46,5 +50,10 @@
     "joi": "^14.3.1",
     "probot": "^9.13.0",
     "probot-config-manager": "^1.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
