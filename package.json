@@ -28,23 +28,23 @@
   },
   "homepage": "https://github.com/lswith/probot-add-comment#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "@types/joi": "^14.3.3",
-    "@types/node": "^12.6.8",
-    "jest": "^24.8.0",
-    "nodemon": "^1.19.1",
-    "prettier": "^1.18.2",
-    "semantic-release": "^15.13.18",
-    "smee-client": "^1.1.0",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0",
+    "@types/jest": "^24.9.1",
+    "@types/joi": "^14.3.4",
+    "@types/node": "^12.12.54",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.19.1",
+    "semantic-release": "^15.14.0",
+    "smee-client": "^1.2.0",
+    "ts-jest": "^24.3.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.5.3"
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "joi": "^14.3.1",
-    "probot": "^9.4.0",
-    "probot-config-manager": "^1.0.1"
+    "probot": "^9.13.0",
+    "probot-config-manager": "^1.0.2"
   }
 }
