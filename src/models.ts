@@ -26,19 +26,19 @@ export const schema = Joi.object().keys({
   comments: Joi.array().items(
     Joi.object().keys({
       comment: Joi.string(),
-      label: Joi.string()
+      label: Joi.string(),
     })
   ),
   issues: Joi.array().items(
     Joi.object().keys({
       comment: Joi.string(),
-      label: Joi.string()
+      label: Joi.string(),
     })
   ),
   pulls: Joi.array().items(
     Joi.object().keys({
       comment: Joi.string(),
-      label: Joi.string()
+      label: Joi.string(),
     })
-  )
+  ),
 });

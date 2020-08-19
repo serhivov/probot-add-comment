@@ -14,7 +14,7 @@ it("adds a comment when the label has been added to the issue", () => {
   const commentBody = "this is a test comment";
   const comments: IComment[] = [{ label: "test", comment: commentBody }];
 
-  return handle(context, comments).then(resp => {
+  return handle(context, comments).then((resp) => {
     expect(github.commentsAdded).toEqual([commentBody]);
     expect(github.comments).toEqual([commentBody]);
   });
@@ -31,7 +31,7 @@ it("doesnt add a comment when the label doesn't match", () => {
   const commentBody = "this is a test comment";
   const comments: IComment[] = [{ label: "test", comment: commentBody }];
 
-  return handle(context, comments).then(resp => {
+  return handle(context, comments).then((resp) => {
     expect(github.commentsAdded).toEqual([]);
     expect(github.comments).toEqual([]);
   });
@@ -48,7 +48,7 @@ it("doesn't add a comment when the comment already exists on the issue", () => {
   );
   const comments: IComment[] = [{ label: "this", comment: commentBody }];
 
-  return handle(context, comments).then(resp => {
+  return handle(context, comments).then((resp) => {
     expect(github.commentsAdded).toEqual([]);
     expect(github.comments).toEqual([commentBody, "new comment"]);
   });
@@ -65,7 +65,7 @@ it("removes a comment when the label is removed", () => {
   );
   const comments: IComment[] = [{ label: "test", comment: commentBody }];
 
-  return handle(context, comments).then(resp => {
+  return handle(context, comments).then((resp) => {
     expect(github.commentsAdded).toEqual([]);
     expect(github.commentsRemoved).toEqual([commentBody]);
   });
@@ -82,7 +82,7 @@ it("doesn't remove a comment when the label doesn't match", () => {
   );
   const comments: IComment[] = [{ label: "test", comment: commentBody }];
 
-  return handle(context, comments).then(resp => {
+  return handle(context, comments).then((resp) => {
     expect(github.commentsAdded).toEqual([]);
     expect(github.commentsRemoved).toEqual([]);
   });

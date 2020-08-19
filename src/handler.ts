@@ -14,7 +14,7 @@ export async function handle(
     owner: owner,
     repo: repo,
     issue: issueNumber,
-    app: "probot-add-comment"
+    app: "probot-add-comment",
   });
 
   for (const c of comments) {
@@ -29,7 +29,7 @@ export async function handle(
               owner: owner,
               repo: repo,
               issue_number: issueNumber,
-              body: c.comment
+              body: c.comment,
             })
             .catch((err: any) => {
               throw new Error(
@@ -57,9 +57,9 @@ async function getCommentId(
     .listComments({
       repo: issue.repo,
       owner: issue.owner,
-      issue_number: issue.number
+      issue_number: issue.number,
     })
-    .then(resp => {
+    .then((resp) => {
       const allComments: Array<{ id: number; body: string }> = resp.data;
       for (const c of allComments) {
         if (c.body === comment) {
@@ -83,7 +83,7 @@ async function pruneComments(context: Context, comment: string): Promise<void> {
   if (id !== null) {
     await context.github.issues
       .deleteComment({ repo: issue.repo, owner: issue.owner, comment_id: id! })
-      .catch(err => {
+      .catch((err) => {
         throw new Error(
           `Couldn't delete comment: ${id} for issue: ${
             context.issue().number

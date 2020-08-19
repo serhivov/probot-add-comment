@@ -8,7 +8,7 @@ module.exports = async (app: Application) => {
     "issues.labeled",
     "issues.unlabeled",
     "pull_request.labeled",
-    "pull_request.unlabeled"
+    "pull_request.unlabeled",
   ];
   const configManager = new ConfigManager<IConfig>("comment.yml", {}, schema);
 
@@ -22,7 +22,7 @@ module.exports = async (app: Application) => {
       owner: owner,
       repo: repo,
       issue: inumber,
-      app: "probot-add-comment"
+      app: "probot-add-comment",
     });
     logger.debug("Getting Config");
     let config: IConfig;
@@ -44,14 +44,14 @@ module.exports = async (app: Application) => {
     if (eventType) {
       logger.debug("Config exists");
       logger.debug(config);
-      await handle(context, eventType!).catch(err => {
+      await handle(context, eventType!).catch((err) => {
         context.log.error(err);
       });
       logger.debug("Handled");
     }
   });
 
-  app.on("*", async context => {
+  app.on("*", async (context) => {
     context.log({ event: context.event, action: context.payload.action });
   });
 };
